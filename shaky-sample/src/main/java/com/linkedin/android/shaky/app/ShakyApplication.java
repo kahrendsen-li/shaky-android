@@ -52,6 +52,12 @@ public class ShakyApplication extends Application {
                 return popupTheme;
             }
 
+            @Override
+            public String getFormFooter() {
+                return "This is a customizable footer. You can add " +
+                        "<a href=\"https://github.com/linkedin/shaky-android\">links</a> where " +
+                        "users can learn more";
+            }
         }, new ShakyFlowCallback() {
             @Override
             public void onShakyStarted(@ShakyFlowCallback.ShakyStartedReason int reason) {

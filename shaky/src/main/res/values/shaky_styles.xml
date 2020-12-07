@@ -65,6 +65,7 @@
         <item name="shakyFormEditTextTextColor">@color/shaky_dark_gray</item>
         <item name="shakyFormEditTextHintColor">@color/shaky_gray</item>
         <item name="shakyFormEditTextAccentColor">@color/shaky_blue</item>
+        <item name="shakyFormFooterTextColor">@color/shaky_gray</item>
 
         <!-- AlertDialog -->
         <item name="shakyAlertDialogTheme">@style/ShakyBaseAlertDialogTheme</item>

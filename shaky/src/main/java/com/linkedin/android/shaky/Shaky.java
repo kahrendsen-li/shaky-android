@@ -322,7 +322,8 @@ public class Shaky implements ShakeDetector.Listener {
                 result.getScreenshotUri(),
                 result.getData(),
                 delegate.resMenu,
-                delegate.getTheme() != null ? delegate.getTheme() : FeedbackActivity.MISSING_RESOURCE);
+                delegate.getTheme() != null ? delegate.getTheme() : FeedbackActivity.MISSING_RESOURCE,
+                delegate.getFormFooter());
         activity.startActivity(intent);
 
         if (shakyFlowCallback != null) {

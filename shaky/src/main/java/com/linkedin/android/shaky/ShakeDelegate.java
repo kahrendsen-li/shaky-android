@@ -21,7 +21,6 @@ import androidx.annotation.IntDef;
 import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.StyleRes;
 import androidx.annotation.WorkerThread;
 
 import java.lang.annotation.Retention;
@@ -119,6 +118,14 @@ public abstract class ShakeDelegate {
      */
     @Nullable
     public Integer getPopupTheme() {
+        return null;
+    }
+
+    /**
+     * @return text to show at the bottom of the feedback form. Can be HTML with tags accepted by
+     * {@link android.text.Html}
+     */
+    public String getFormFooter() {
         return null;
     }
 

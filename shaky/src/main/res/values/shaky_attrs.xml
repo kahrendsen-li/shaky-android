@@ -41,12 +41,10 @@
     <attr name="shakyFormEditTextHintColor" format="reference|color" />
     <attr name="shakyFormEditTextBackgroundColor" format="reference|color" />
     <attr name="shakyFormEditTextAccentColor" format="reference|color" />
+    <attr name="shakyFormFooterTextColor" format="reference|color" />
 
     <!-- AlertDialog -->
     <attr name="shakyAlertDialogTheme" format="reference" />
-<!--    <attr name="shakyAlertDialogBackgroundColor" format="reference|color" />-->
-<!--    <attr name="shakyAlertDialogTextColor" format="reference|color" />-->
-<!--    <attr name="shakyAlertDialogButtonColor" format="reference|color" />-->
 
     <!-- Shake Pop-up -->
     <attr name="shakyPopupBackgroundColor" format="reference|color" />

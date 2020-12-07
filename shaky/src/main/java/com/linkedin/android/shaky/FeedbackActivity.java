@@ -46,6 +46,7 @@ public class FeedbackActivity extends AppCompatActivity {
     static final String RES_MENU = "resMenu";
     static final String SUBCATEGORY = "subcategory";
     static final String THEME = "theme";
+    static final String FOOTER = "footer";
     static final int MISSING_RESOURCE = 0;
 
     private Uri imageUri;
@@ -53,18 +54,21 @@ public class FeedbackActivity extends AppCompatActivity {
     private Bundle userData;
     private @MenuRes int resMenu;
     private @StyleRes Integer customTheme;
+    private @Nullable String footer;
 
     @NonNull
     public static Intent newIntent(@NonNull Context context,
                                    @Nullable Uri screenshotUri,
                                    @Nullable Bundle userData,
                                    @MenuRes int resMenu,
-                                   @StyleRes int theme) {
+                                   @StyleRes int theme,
+                                   @Nullable String footer) {
         Intent intent = new Intent(context, FeedbackActivity.class);
         intent.putExtra(SCREENSHOT_URI, screenshotUri);
         intent.putExtra(USER_DATA, userData);
         intent.putExtra(RES_MENU, resMenu);
         intent.putExtra(THEME, theme);
+        intent.putExtra(FOOTER, footer);
         return intent;
     }
 
@@ -80,6 +84,7 @@ public class FeedbackActivity extends AppCompatActivity {
         imageUri = getIntent().getParcelableExtra(SCREENSHOT_URI);
         userData = getIntent().getBundleExtra(USER_DATA);
         resMenu = getIntent().getIntExtra(RES_MENU, FormFragment.DEFAULT_MENU);
+        footer = getIntent().getStringExtra(FOOTER);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
@@ -144,6 +149,7 @@ public class FeedbackActivity extends AppCompatActivity {
                 .setMenu(resMenu)
                 .setSubtypes(subtypes != null ? R.array.shaky_bug_subcategories : null, subtypes)
                 .setTheme(customTheme)
+                .setFormFooter(footer)
                 .build());
     }
 

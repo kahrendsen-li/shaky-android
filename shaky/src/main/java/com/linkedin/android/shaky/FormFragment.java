@@ -21,6 +21,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.text.Html;
+import android.text.Spanned;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -61,6 +63,7 @@ public class FormFragment extends Fragment {
     private static final String KEY_SUBTYPE_LABELS = "subtypeLabels";
     private static final String KEY_SUBTYPES = "subtypes";
     private static final String KEY_THEME = "theme";
+    private static final String KEY_FOOTER = "footer";
 
     @Nullable private LayoutInflater inflater;
 
@@ -161,6 +164,14 @@ public class FormFragment extends Fragment {
 
         attachmentImageView.setImageURI(screenshotUri);
         attachmentImageView.setOnClickListener(createNavigationClickListener());
+
+        String footerText = getArguments().getString(KEY_FOOTER);
+        if (footerText != null) {
+            TextView footerView = view.findViewById(R.id.shaky_form_footer);
+            footerView.setVisibility(View.VISIBLE);
+            Spanned spannedText = Html.fromHtml(footerText);
+            footerView.setText(spannedText);
+        }
     }
 
     @NonNull
@@ -287,6 +298,7 @@ public class FormFragment extends Fragment {
         @Nullable @ArrayRes Integer subtypeLabels;
         @Nullable String[] subtypes;
         @Nullable @StyleRes Integer theme;
+        @Nullable String footer;
 
         Builder(@NonNull String title, @NonNull String hint) {
             this.title = title;
@@ -322,6 +334,12 @@ public class FormFragment extends Fragment {
         }
 
         @NonNull
+        Builder setFormFooter(@Nullable String formFooter) {
+            this.footer = formFooter;
+            return this;
+        }
+
+        @NonNull
         FormFragment build() {
             Bundle args = new Bundle();
             args.putParcelable(KEY_SCREENSHOT_URI, screenshotUri);
@@ -335,6 +353,7 @@ public class FormFragment extends Fragment {
             if (theme != null) {
                 args.putInt(KEY_THEME, theme);
             }
+            args.putString(KEY_FOOTER, footer);
 
             FormFragment fragment = new FormFragment();
             fragment.setArguments(args);
